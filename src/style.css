@@ -1,7 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@undefined,undefined,undefined,undefined");
+
 body {
-    background-color: bisque;
+  display: flex;
+  justify-content: center;  
+}
+.container {
+  max-width: 500px;
+  min-width: 375px;
+  box-shadow: 0 0 0 2px #fff,
+  0.3em 0.3em 1em #0000004d;  
 }
 
-.hello {
-    color: red;
-  }
+.div_title, .div_placeholder {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #c3c3c5;
+  padding: 8px 15px;
+  margin-top: 15px;  
+}
+
+.main__title {
+  color: #545862;
+  font-size: 18px;
+  margin: 0;
+}
+
+.sync_image, .submit_image {
+  width: 18px;
+  height: 19px;
+  align-self: center;
+}
+
+.div_placeholder input {
+  border: none;
+}
+
+.div_placeholder input::placeholder {
+  font-size: 17px;
+  font-style: italic;
+}
+
+.list__element {
+  display: flex;
+  justify-content: flex-start;  
+  border-bottom: 1px solid #c3c3c5;  
+}
+
+.list__element img {
+  width: 18px;
+  height: 19px;
+  align-self: center;
+  margin-left: 15px;
+}
+
+.list__element h3 {
+  font-style: normal;
+  color: #545862;
+  font-family: 'Open Sans';
+  padding-left: 10px;
+  font-size: 17px;
+}
+
+.clear_all {
+  display: flex;
+  justify-content: center;
+}
+
+.clear_all h2 {
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+
+
+
