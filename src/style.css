@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@undefined,undefined,undefined,undefined");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&display=swap');
 
 body {
   display: flex;
   justify-content: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .container {
@@ -20,6 +21,7 @@ body {
   border-bottom: 1px solid #c3c3c5;
   padding: 8px 15px;
   margin-top: 15px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .main__title {

@@ -2,10 +2,6 @@ import './style.css';
 import syncImage from './images/sync.png';
 import submitImage from './images/submit.png';
 import checkBox from './images/check_box.png';
-import OpenSans from './fonts/OpenSans-VariableFont_wdth,wght.ttf';
-
-// To change the font
-document.querySelector('body').style.fontFamily = OpenSans;
 
 // array of some simple to do tasks
 const tasks = [
