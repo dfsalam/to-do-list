@@ -1,68 +1,60 @@
-import _ from 'lodash';
 import './style.css';
-import syncImage from './images/sync.png'
-import submitImage from './images/submit.png'
-import checkBox from './images/check_box.png'
-import OpenSansItalic from './fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf'
-import OpenSans from './fonts/OpenSans-VariableFont_wdth,wght.ttf'
+import syncImage from './images/sync.png';
+import submitImage from './images/submit.png';
+import checkBox from './images/check_box.png';
+import OpenSans from './fonts/OpenSans-VariableFont_wdth,wght.ttf';
 
-//To change the font
+// To change the font
 document.querySelector('body').style.fontFamily = OpenSans;
 
-//array of some simple to do tasks
+// array of some simple to do tasks
 const tasks = [
   {
-    'description':'Buy milk',
-    'completed': false,
-    'index':1
+    description: 'Buy milk',
+    completed: false,
+    index: 1,
   },
   {
-    'description':'Clean bathroom',
-    'completed': false,
-    'index':2
+    description: 'Clean bathroom',
+    completed: false,
+    index: 2,
   },
   {
-    'description':'Write report',
-    'completed': false,
-    'index':3
-  }
-]
+    description: 'Write report',
+    completed: false,
+    index: 3,
+  },
+];
 
-const mainContainer = document.getElementById('main');
 const containerElement = document.getElementById('to-do-list');
 
-//Insert the sync image
+// Insert the sync image
 const syncImageElement = document.createElement('img');
 syncImageElement.src = syncImage;
-syncImageElement.alt = "Sync";
+syncImageElement.alt = 'Sync';
 document.querySelector('.div_title').appendChild(syncImageElement);
 syncImageElement.classList.add('sync_image');
 
-//Insert the submit image
+// Insert the submit image
 const submitImageElement = document.createElement('img');
 submitImageElement.src = submitImage;
 document.querySelector('.div_placeholder').appendChild(submitImageElement);
 submitImageElement.classList.add('submit_image');
 
+// Function to load elements from array to to-do-list section
 
-
-//Function to load elements from array to to-do-list section
-
-const loadElements = (array, container) => { 
-  let elementsToDisplay = "";
-  array.forEach( e => {
+const loadElements = (array, container) => {
+  let elementsToDisplay = '';
+  array.forEach((e) => {
     elementsToDisplay += `
     <div class = "list__element">
     <img src="${checkBox}" alt="check box" >
     <h3>${e.description}</h3>
     </div>
-    `
+    `;
+  });
 
-  })
-  
   container.innerHTML = elementsToDisplay;
-
-}
+};
 
 loadElements(tasks, containerElement);
-
