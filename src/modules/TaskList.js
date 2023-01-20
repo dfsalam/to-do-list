@@ -51,8 +51,7 @@ export default class taskList {
   }
 
   update = (index, newValue) => {
-    this.taskArray[index-1].description = newValue;
-    console.log("Description = "+this.taskArray[index-1].description);
+    this.taskArray[index-1].description = newValue;   
     this.saveLocally();
   }
 

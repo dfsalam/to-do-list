@@ -64,6 +64,7 @@ body {
   display: flex;
   justify-content: flex-start;
   border-bottom: 1px solid #c3c3c5;
+  padding: 10px 2px;
 }
 
 .list__element img {
@@ -91,8 +92,23 @@ body {
   text-decoration: underline;
 }
 
+.list__element input {
+  border: none;
+  width: 290px;
+  padding-left: 10px;
+}
+
+.list_element input:focus {
+  outline: none;
+  border: none;
+}
+
 .remove__button {
   background-image: url('./images/remove_icon.png');
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+  width: 28px;
 }
 
 
