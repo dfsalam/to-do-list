@@ -41,6 +41,15 @@ body {
   border: none;
 }
 
+.div_placeholder input:focus {
+  outline: none;
+  font-family: 'Open Sans', serif;
+}
+
+.div_placeholder input:focus::placeholder {
+  color: transparent;
+}
+
 .div_placeholder input::placeholder {
   font-size: 17px;
   font-style: italic;
@@ -59,7 +68,7 @@ body {
   margin-left: 15px;
 }
 
-.list__element h3 {
+.individual__task {
   font-style: normal;
   color: #545862;
   font-family: 'Open Sans', serif;

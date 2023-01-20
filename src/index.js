@@ -1,26 +1,7 @@
 import './style.css';
 import syncImage from './images/sync.png';
 import submitImage from './images/submit.png';
-import checkBox from './images/check_box.png';
-
-// array of some simple to do tasks
-const tasks = [
-  {
-    description: 'Buy milk',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Clean bathroom',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Write report',
-    completed: false,
-    index: 3,
-  },
-];
+import TaskList from './TaskList.js';
 
 const containerElement = document.getElementById('to-do-list');
 
@@ -37,20 +18,20 @@ submitImageElement.src = submitImage;
 document.querySelector('.div_placeholder').appendChild(submitImageElement);
 submitImageElement.classList.add('submit_image');
 
-// Function to load elements from array to to-do-list section
+//Instance taskList
+const taskList = new TaskList(containerElement);
 
-const loadElements = (array, container) => {
-  let elementsToDisplay = '';
-  array.forEach((e) => {
-    elementsToDisplay += `
-    <div class = "list__element">
-    <img src="${checkBox}" alt="check box" >
-    <h3>${e.description}</h3>
-    </div>
-    `;
-  });
+//Event listener on submit icon
+submitImageElement.addEventListener('click', ()=>{
+  const descriptionElement = document.getElementById('input__task');
+  const description = descriptionElement.value.trim();
+  taskList.add(description);
+  descriptionElement.reset();
+  descriptionElement.focus();
+});
 
-  container.innerHTML = elementsToDisplay;
-};
 
-loadElements(tasks, containerElement);
+
+
+
+
