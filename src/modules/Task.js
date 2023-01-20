@@ -1,11 +1,10 @@
 import checkBox from '../images/check_box.png';
-import removeIcon from '../images/remove_icon.png';
 
 export default class Task {
-  constructor(description, completed = false, index) {
+  constructor(description, index, completed = false) {
     this.description = description;
-    this.completed = completed;
     this.index = index;
+    this.completed = completed;    
   }
 
     createHtml = () => {
@@ -14,7 +13,7 @@ export default class Task {
       task.innerHTML = `
       <img src="${checkBox}" alt="check box" >
       <input value=${this.description}></input>
-      <button class="remove__button" id="${this.index}"><img src="${removeIcon}" alt="Delete" ></button>
+      <button class="remove__button" id="${this.index}"></button>
       `;
       return task;
     }

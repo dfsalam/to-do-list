@@ -5,13 +5,14 @@ export default class taskList {
     this.taskArray = JSON.parse(localStorage.getItem('taskList')) || [];
     this.container = container;
     this.size = this.taskArray.length;
+    this.loadList();
   }
 
   loadList = () => {
     const instances = [];
     const fragment = document.createDocumentFragment();
-    this.taskArray.forEach(({ description, completed, index }) => {
-      const task = new Task(description, completed, index);
+    this.taskArray.forEach(({ description, index, completed }) => {
+      const task = new Task(description, index, completed);
       fragment.appendChild(this.create(task));
       instances.push(task);
     });
@@ -24,14 +25,17 @@ export default class taskList {
   }
 
   remove = (button) => {
-    this.taskArray = this.taskArray.filter((task) => task.id !== button.id);
+    this.taskArray = this.taskArray.filter((task) => task.index != button.id);    
     button.parentElement.remove();
-    this.saveLocally();
+    this.updateIndex(this.taskArray);
+    this.saveLocally();    
   }
 
   add = (description) => {
-    const task = new Task(description);
-    this.taskList.push(task);
+    const index = this.amount + 1;
+    
+    const task = new Task(description, index);
+    this.taskArray.push(task);
     this.container.appendChild(this.create(task));
     this.saveLocally();
   }
@@ -43,6 +47,12 @@ export default class taskList {
       this.remove(target);
     });
     return html;
+  }
+
+  updateIndex (array) {
+    array.forEach((e, position) =>{
+      e.index = position + 1 ;
+    })
   }
 
   get amount() {

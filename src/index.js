@@ -18,6 +18,9 @@ submitImageElement.src = submitImage;
 document.querySelector('.div_placeholder').appendChild(submitImageElement);
 submitImageElement.classList.add('submit_image');
 
+//To clear local storage
+//localStorage.clear();
+
 // Instance taskList
 const taskList = new TaskList(containerElement);
 
@@ -25,7 +28,11 @@ const taskList = new TaskList(containerElement);
 submitImageElement.addEventListener('click', () => {
   const descriptionElement = document.getElementById('input__task');
   const description = descriptionElement.value.trim();
+  if (description===""){
+    alert("Please write a task before submitting");
+  }else{
   taskList.add(description);
-  descriptionElement.reset();
-  descriptionElement.focus();
+  descriptionElement.value ="";
+  descriptionElement.focus();}
+
 });

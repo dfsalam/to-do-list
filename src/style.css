@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&display=swap');
 
+* {
+  font-family: 'Open Sans', sans-serif;
+
+  font-size: 16px;
+}
+
 body {
   display: flex;
-  justify-content: center;
-  font-family: 'Open Sans', sans-serif;
+  justify-content: center;  
 }
 
 .container {
@@ -85,3 +90,10 @@ body {
   font-size: 18px;
   text-decoration: underline;
 }
+
+.remove__button {
+  background-image: url('./images/remove_icon.png');
+}
+
+
+
