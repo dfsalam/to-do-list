@@ -1,7 +1,7 @@
 import './style.css';
 import syncImage from './images/sync.png';
 import submitImage from './images/submit.png';
-import TaskList from './TaskList.js';
+import TaskList from './modules/TaskList.js';
 
 const containerElement = document.getElementById('to-do-list');
 
@@ -18,20 +18,14 @@ submitImageElement.src = submitImage;
 document.querySelector('.div_placeholder').appendChild(submitImageElement);
 submitImageElement.classList.add('submit_image');
 
-//Instance taskList
+// Instance taskList
 const taskList = new TaskList(containerElement);
 
-//Event listener on submit icon
-submitImageElement.addEventListener('click', ()=>{
+// Event listener on submit icon
+submitImageElement.addEventListener('click', () => {
   const descriptionElement = document.getElementById('input__task');
   const description = descriptionElement.value.trim();
   taskList.add(description);
   descriptionElement.reset();
   descriptionElement.focus();
 });
-
-
-
-
-
-

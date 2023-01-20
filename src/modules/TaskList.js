@@ -24,16 +24,16 @@ export default class taskList {
   }
 
   remove = (button) => {
-    this.taskArray = this.taskArray.filter((task) => task.id !== task.id);
+    this.taskArray = this.taskArray.filter((task) => task.id !== button.id);
     button.parentElement.remove();
-    this.saveLocally();       
+    this.saveLocally();
   }
 
   add = (description) => {
-    const task = new Book(description);
+    const task = new Task(description);
     this.taskList.push(task);
-    this.container.appendChild(this.create(book));
-    this.saveLocally();    
+    this.container.appendChild(this.create(task));
+    this.saveLocally();
   }
 
   create = (task) => {

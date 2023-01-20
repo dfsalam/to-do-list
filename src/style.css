@@ -46,13 +46,13 @@ body {
   font-family: 'Open Sans', serif;
 }
 
-.div_placeholder input:focus::placeholder {
-  color: transparent;
-}
-
 .div_placeholder input::placeholder {
   font-size: 17px;
   font-style: italic;
+}
+
+.div_placeholder input:focus::placeholder {
+  color: transparent;
 }
 
 .list__element {
