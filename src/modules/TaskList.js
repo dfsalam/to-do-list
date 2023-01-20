@@ -25,7 +25,7 @@ export default class taskList {
   }
 
   remove = (button) => {
-    this.taskArray = this.taskArray.filter((task) => task.index != button.id);
+    this.taskArray = this.taskArray.filter((task) => task.index !== button.id);
     button.parentElement.remove();
     this.updateIndex(this.taskArray);
     this.saveLocally();
@@ -45,7 +45,7 @@ export default class taskList {
     const btn = html.querySelector('button');
     btn.addEventListener('click', ({ target }) => {
       this.remove(target);
-    });    
+    });
     return html;
   }
 
@@ -54,7 +54,7 @@ export default class taskList {
     this.saveLocally();
   }
 
-  updateIndex(array) {
+  updateIndex = (array) => {
     array.forEach((e, position) => {
       e.index = position + 1;
     });

@@ -46,7 +46,7 @@ submitImageElement.addEventListener('click', () => {
   const descriptionElement = document.getElementById('input__task');
   const description = descriptionElement.value.trim();
   if (description === '') {
-    return;
+    descriptionElement.blur();
   } else {
     taskList.add(description);
     descriptionElement.value = '';
@@ -57,7 +57,7 @@ submitImageElement.addEventListener('click', () => {
 const taskElements = document.querySelectorAll('.list__element input');
 
 taskElements.forEach((e) => {
-  e.addEventListener('input', () => {    
+  e.addEventListener('input', () => {
     const index = e.id;
     const newValue = e.value;
 
