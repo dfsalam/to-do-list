@@ -25,15 +25,15 @@ export default class taskList {
   }
 
   remove = (button) => {
-    this.taskArray = this.taskArray.filter((task) => task.index != button.id);    
+    this.taskArray = this.taskArray.filter((task) => task.index != button.id);
     button.parentElement.remove();
     this.updateIndex(this.taskArray);
-    this.saveLocally();    
+    this.saveLocally();
   }
 
   add = (description) => {
     const index = this.amount + 1;
-    
+
     const task = new Task(description, index);
     this.taskArray.push(task);
     this.container.appendChild(this.create(task));
@@ -45,20 +45,19 @@ export default class taskList {
     const btn = html.querySelector('button');
     btn.addEventListener('click', ({ target }) => {
       this.remove(target);
-    });
-    console.log(html);
+    });    
     return html;
   }
 
   update = (index, newValue) => {
-    this.taskArray[index-1].description = newValue;   
+    this.taskArray[index - 1].description = newValue;
     this.saveLocally();
   }
 
-  updateIndex (array) {
-    array.forEach((e, position) =>{
-      e.index = position + 1 ;
-    })
+  updateIndex(array) {
+    array.forEach((e, position) => {
+      e.index = position + 1;
+    });
   }
 
   get amount() {

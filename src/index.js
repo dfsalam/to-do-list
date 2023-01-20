@@ -18,57 +18,57 @@ submitImageElement.src = submitImage;
 document.querySelector('.div_placeholder').appendChild(submitImageElement);
 submitImageElement.classList.add('submit_image');
 
-//To clear local storage
-//localStorage.clear();
+// To clear local storage
+// localStorage.clear();
 
 // Instance taskList
 const taskList = new TaskList(containerElement);
 
-//Event listener on input task to submit with Enter
+// Event listener on input task to submit with Enter
 const inputTask = document.getElementById('input__task');
-  inputTask.addEventListener('click',() => {
+inputTask.addEventListener('click', () => {
   inputTask.addEventListener('keypress', (e) => {
-  if(e.key === 'Enter'){
-    const description = inputTask.value.trim();
-    if (description===""){
-      alert("Please write a task before submitting");
-      return;
-    }else{
-    taskList.add(description);
-    inputTask.value ="";
-    inputTask.focus();}
-  }
-})})
-
+    if (e.key === 'Enter') {
+      const description = inputTask.value.trim();
+      if (description === '') {
+        inputTask.blur();
+      } else {
+        taskList.add(description);
+        inputTask.value = '';
+        inputTask.focus();
+      }
+    }
+  });
+});
 
 // Event listener on submit icon
 submitImageElement.addEventListener('click', () => {
   const descriptionElement = document.getElementById('input__task');
   const description = descriptionElement.value.trim();
-  if (description===""){
-    alert("Please write a task before submitting");
+  if (description === '') {
     return;
-  }else{
-  taskList.add(description);
-  descriptionElement.value ="";
-  descriptionElement.focus();}
-
+  } else {
+    taskList.add(description);
+    descriptionElement.value = '';
+    descriptionElement.focus();
+  }
 });
 
 const taskElements = document.querySelectorAll('.list__element input');
 
+taskElements.forEach((e) => {
+  e.addEventListener('input', () => {    
+    const index = e.id;
+    const newValue = e.value;
 
-taskElements.forEach((e)=>{
-  e.addEventListener('input', () => {
-    console.log("Click inside input");
-    const index = e.id;    
-    const newValue = e.value;           
-    addEventListener('focusout', () => {    
-      taskList.update(index, newValue);     
-    })   
-  })
-})
-
-
-
-
+    e.addEventListener('keypress', (pressed) => {
+      if (pressed.key === 'Enter') {
+        taskList.update(index, newValue);
+        e.blur();
+      }
+    });
+    e.addEventListener('focusout', () => {
+      taskList.update(index, newValue);
+    });
+  });
+});
