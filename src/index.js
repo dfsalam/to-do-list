@@ -36,3 +36,20 @@ submitImageElement.addEventListener('click', () => {
   descriptionElement.focus();}
 
 });
+
+const taskElements = document.querySelectorAll('.list__element input');
+
+
+taskElements.forEach((e)=>{
+  e.addEventListener('input', () => {
+    const index = e.id;
+    addEventListener('focusout', () => {
+      const newValue = e.value;      
+      taskList.update(index, newValue);
+      console.log('Click outside input')
+    })
+    
+  })
+})
+
+

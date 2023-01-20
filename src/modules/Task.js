@@ -12,7 +12,7 @@ export default class Task {
       task.classList.add('list__element');
       task.innerHTML = `
       <img src="${checkBox}" alt="check box" >
-      <input value=${this.description}></input>
+      <input id="${this.index}" value=${this.description}></input>
       <button class="remove__button" id="${this.index}"></button>
       `;
       return task;

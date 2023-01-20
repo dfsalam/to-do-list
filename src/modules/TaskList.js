@@ -46,7 +46,14 @@ export default class taskList {
     btn.addEventListener('click', ({ target }) => {
       this.remove(target);
     });
+    console.log(html);
     return html;
+  }
+
+  update = (index, newValue) => {
+    this.taskArray[index-1].description = newValue;
+    console.log("Description = "+this.taskArray[index-1].description);
+    this.saveLocally();
   }
 
   updateIndex (array) {
