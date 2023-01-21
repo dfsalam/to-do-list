@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&display=swap');
 
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
 body {
   display: flex;
   justify-content: center;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .container {
@@ -12,6 +16,12 @@ body {
   box-shadow:
     0 0 0 2px #fff,
     0.3em 0.3em 1em #0000004d;
+}
+
+.task__listed {
+  border: none;
+  width: 290px;
+  padding-left: 10px;
 }
 
 .div_title,
@@ -41,15 +51,25 @@ body {
   border: none;
 }
 
+.div_placeholder input:focus {
+  outline: none;
+  font-family: 'Open Sans', serif;
+}
+
 .div_placeholder input::placeholder {
   font-size: 17px;
   font-style: italic;
+}
+
+.div_placeholder input:focus::placeholder {
+  color: transparent;
 }
 
 .list__element {
   display: flex;
   justify-content: flex-start;
   border-bottom: 1px solid #c3c3c5;
+  padding: 10px 2px;
 }
 
 .list__element img {
@@ -59,7 +79,7 @@ body {
   margin-left: 15px;
 }
 
-.list__element h3 {
+.individual__task {
   font-style: normal;
   color: #545862;
   font-family: 'Open Sans', serif;
@@ -75,4 +95,21 @@ body {
 .clear_all h2 {
   font-size: 18px;
   text-decoration: underline;
+}
+
+.list_element input:focus {
+  outline: none;
+  border: none;
+}
+
+.remove__button {
+  background-image: url('./images/remove_icon.png');
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+  width: 28px;
+}
+
+.task__completed {
+  text-decoration: line-through;
 }
