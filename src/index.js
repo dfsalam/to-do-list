@@ -20,7 +20,7 @@ document.querySelector('.div_placeholder').appendChild(submitImageElement);
 submitImageElement.classList.add('submit_image');
 
 // To clear local storage
-// localStorage.clear();
+//localStorage.clear();
 
 // Instance taskList
 const taskList = new TaskList(containerElement);
@@ -40,7 +40,7 @@ inputTask.addEventListener('click', () => {
   });
 });
 
-// Event listener on submit icon (ADD)
+// Event listener on input task submit icon (ADD)
 submitImageElement.addEventListener('click', () => {
   const descriptionElement = document.getElementById('input__task');
   const description = descriptionElement.value.trim();
@@ -55,20 +55,32 @@ submitImageElement.addEventListener('click', () => {
 
 //Event listener inside task list (UPDATE)
 const taskElements = document.querySelectorAll('.task__listed');
-
+console.log(taskElements)
 taskElements.forEach((e) => {
   e.addEventListener('input', () => {
-    const index = Number(e.id);
+    console.log("e.value = "+e.value)
+    const tag = e.id;
     const newValue = e.value;
+    //Get the button to erase the element
+    const btn = e.nextElementSibling;
 
     e.addEventListener('keypress', (pressed) => {
       if (pressed.key === 'Enter') {
-        taskList.update(index, newValue);
-        e.blur();
+        if(newValue!==""){
+          taskList.update(tag, newValue);
+          e.blur();
+        }else{
+          taskList.remove(btn);
+        }
+        
       }
     });
     e.addEventListener('focusout', () => {
-      taskList.update(index, newValue);
+      if(newValue!==""){
+        taskList.update(tag, newValue);        
+      }else{
+        taskList.remove(btn);
+      }      
     });
   });
 });
@@ -76,8 +88,8 @@ taskElements.forEach((e) => {
 // Checkbox eventlistener
 const checkboxList = document.querySelectorAll('.checkbox');
 checkboxList.forEach((e) => {
-  const index = Number(e.id);
+  const tag = e.id;
   e.addEventListener('change', () => {
-    interactive(e, taskList, index);
+    interactive(e, taskList, tag);
   });
 });
