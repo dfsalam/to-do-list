@@ -87,12 +87,12 @@ body {
   font-size: 17px;
 }
 
-.clear_all {
+.clear__all {
   display: flex;
   justify-content: center;
 }
 
-.clear_all h2 {
+.clear__all h2 {
   font-size: 18px;
   text-decoration: underline;
 }

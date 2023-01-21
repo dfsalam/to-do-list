@@ -3,6 +3,7 @@ import syncImage from './images/sync.png';
 import submitImage from './images/submit.png';
 import TaskList from './modules/TaskList.js';
 import interactive from './modules/interactive.js';
+import clearAll from './modules/clearAll.js';
 
 const containerElement = document.getElementById('to-do-list');
 
@@ -25,15 +26,13 @@ submitImageElement.classList.add('submit_image');
 // Instance taskList
 const taskList = new TaskList(containerElement);
 
-// Event listener on input task to submit with Enter
+// Event listener on input task to submit with Enter (ADD)
 const inputTask = document.getElementById('input__task');
 inputTask.addEventListener('click', () => {
   inputTask.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
       const description = inputTask.value.trim();
-      if (description === '') {
-        inputTask.blur();
-      } else {
+      if (description !== '') {
         taskList.add(description);
         inputTask.value = '';
         inputTask.focus();
@@ -42,7 +41,7 @@ inputTask.addEventListener('click', () => {
   });
 });
 
-// Event listener on submit icon
+// Event listener on input task submit icon (ADD)
 submitImageElement.addEventListener('click', () => {
   const descriptionElement = document.getElementById('input__task');
   const description = descriptionElement.value.trim();
@@ -55,30 +54,46 @@ submitImageElement.addEventListener('click', () => {
   }
 });
 
-const taskElements = document.querySelectorAll('.list__element input');
-
+// Event listener inside task list (UPDATE)
+const taskElements = document.querySelectorAll('.task__listed');
 taskElements.forEach((e) => {
   e.addEventListener('input', () => {
-    const index = e.id;
+    const tag = e.id;
     const newValue = e.value;
+    // Get the button to erase the element
+    const btn = e.nextElementSibling;
 
     e.addEventListener('keypress', (pressed) => {
       if (pressed.key === 'Enter') {
-        taskList.update(index, newValue);
-        e.blur();
+        if (newValue !== '') {
+          taskList.update(tag, newValue);
+          e.blur();
+        } else {
+          taskList.remove(btn);
+        }
       }
     });
     e.addEventListener('focusout', () => {
-      taskList.update(index, newValue);
+      if (newValue !== '') {
+        taskList.update(tag, newValue);
+      } else {
+        taskList.remove(btn);
+      }
     });
   });
 });
 
-// Checkbox eventlistener
+// Checkbox eventlistener, to change completed to false and true and line-through the task
 const checkboxList = document.querySelectorAll('.checkbox');
 checkboxList.forEach((e) => {
-  const index = e.id;
   e.addEventListener('change', () => {
-    interactive(e, taskList, index);
+    const tag = e.id;
+    interactive(e, taskList, tag);
   });
+});
+
+// Clear all completed elements
+const clearAllBtn = document.querySelector('.clear__all h2');
+clearAllBtn.addEventListener('click', () => {
+  clearAll(taskList);
 });
