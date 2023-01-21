@@ -2,6 +2,7 @@ import './style.css';
 import syncImage from './images/sync.png';
 import submitImage from './images/submit.png';
 import TaskList from './modules/TaskList.js';
+import interactive from './modules/interactive.js';
 
 const containerElement = document.getElementById('to-do-list');
 
@@ -70,5 +71,15 @@ taskElements.forEach((e) => {
     e.addEventListener('focusout', () => {
       taskList.update(index, newValue);
     });
+  });
+});
+
+//Checkbox eventlistener
+const checkboxList = document.querySelectorAll(".checkbox");
+checkboxList.forEach((e)=>{
+  const index = e.id;
+  e.addEventListener('change', ()=>{
+    console.log("Checked");
+    interactive(e, taskList, index);
   });
 });
