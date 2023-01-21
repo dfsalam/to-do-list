@@ -20,7 +20,7 @@ document.querySelector('.div_placeholder').appendChild(submitImageElement);
 submitImageElement.classList.add('submit_image');
 
 // To clear local storage
-//localStorage.clear();
+// localStorage.clear();
 
 // Instance taskList
 const taskList = new TaskList(containerElement);
@@ -74,12 +74,11 @@ taskElements.forEach((e) => {
   });
 });
 
-//Checkbox eventlistener
-const checkboxList = document.querySelectorAll(".checkbox");
-checkboxList.forEach((e)=>{
+// Checkbox eventlistener
+const checkboxList = document.querySelectorAll('.checkbox');
+checkboxList.forEach((e) => {
   const index = e.id;
-  e.addEventListener('change', ()=>{
-    console.log("Checked");
+  e.addEventListener('change', () => {
     interactive(e, taskList, index);
   });
 });
