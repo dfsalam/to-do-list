@@ -4,8 +4,9 @@ export default class taskList {
   constructor(container) {
     this.taskArray = JSON.parse(localStorage.getItem('taskList')) || [];
     this.container = container;
-    this.size = this.taskArray.length;
-    this.loadList();
+    if (this.amount > 0) {
+      this.loadList();
+    }
   }
 
   loadList = () => {
@@ -25,7 +26,7 @@ export default class taskList {
   }
 
   remove = (button) => {
-    this.taskArray = this.taskArray.filter((task) => task.index !== Number(button.id));
+    this.taskArray = this.taskArray.filter((task) => task.tag !== button.id);
     button.parentElement.remove();
     this.updateIndex(this.taskArray);
     this.saveLocally();
@@ -41,7 +42,7 @@ export default class taskList {
   }
 
   create = (task) => {
-    const html = task.createHtml(this.remove);
+    const html = task.createHtml();
     const btn = html.querySelector('button');
     btn.addEventListener('click', ({ target }) => {
       this.remove(target);
@@ -49,18 +50,26 @@ export default class taskList {
     return html;
   }
 
-  update = (index, newValue) => {
-    this.taskArray[index - 1].description = newValue;
+  update = (tag, newValue) => {
+    this.taskArray.forEach((e) => {
+      if (e.tag === tag) {
+        e.description = newValue;
+      }
+    });
     this.saveLocally();
   }
 
-  updateIndex = (array) => {
-    array.forEach((e, position) => {
+  updateIndex = () => {
+    this.taskArray.forEach((e, position) => {
       e.index = position + 1;
     });
   }
 
   get amount() {
     return this.taskArray.length;
+  }
+
+  get array() {
+    return this.taskArray;
   }
 }
