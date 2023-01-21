@@ -3,6 +3,7 @@ import syncImage from './images/sync.png';
 import submitImage from './images/submit.png';
 import TaskList from './modules/TaskList.js';
 import interactive from './modules/interactive.js';
+import clearAll from './modules/clearAll.js';
 
 const containerElement = document.getElementById('to-do-list');
 
@@ -20,7 +21,7 @@ document.querySelector('.div_placeholder').appendChild(submitImageElement);
 submitImageElement.classList.add('submit_image');
 
 // To clear local storage
-//localStorage.clear();
+// localStorage.clear();
 
 // Instance taskList
 const taskList = new TaskList(containerElement);
@@ -53,44 +54,46 @@ submitImageElement.addEventListener('click', () => {
   }
 });
 
-//Event listener inside task list (UPDATE)
+// Event listener inside task list (UPDATE)
 const taskElements = document.querySelectorAll('.task__listed');
-console.log(taskElements)
 taskElements.forEach((e) => {
   e.addEventListener('input', () => {
-    console.log("e.value = "+e.value)
     const tag = e.id;
     const newValue = e.value;
-    //Get the button to erase the element
+    // Get the button to erase the element
     const btn = e.nextElementSibling;
 
     e.addEventListener('keypress', (pressed) => {
       if (pressed.key === 'Enter') {
-        if(newValue!==""){
+        if (newValue !== '') {
           taskList.update(tag, newValue);
           e.blur();
-        }else{
+        } else {
           taskList.remove(btn);
         }
-        
       }
     });
     e.addEventListener('focusout', () => {
-      if(newValue!==""){
-        taskList.update(tag, newValue);        
-      }else{
+      if (newValue !== '') {
+        taskList.update(tag, newValue);
+      } else {
         taskList.remove(btn);
-      }      
+      }
     });
   });
 });
 
-// Checkbox eventlistener
+// Checkbox eventlistener, to change completed to false and true and line-through the task
 const checkboxList = document.querySelectorAll('.checkbox');
 checkboxList.forEach((e) => {
-  
   e.addEventListener('change', () => {
     const tag = e.id;
     interactive(e, taskList, tag);
   });
+});
+
+// Clear all completed elements
+const clearAllBtn = document.querySelector('.clear__all h2');
+clearAllBtn.addEventListener('click', () => {
+  clearAll(taskList);
 });

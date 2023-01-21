@@ -3,10 +3,10 @@ import Task from './Task.js';
 export default class taskList {
   constructor(container) {
     this.taskArray = JSON.parse(localStorage.getItem('taskList')) || [];
-    this.container = container;    
+    this.container = container;
     if (this.amount > 0) {
-      this.loadList();      
-    }    
+      this.loadList();
+    }
   }
 
   loadList = () => {
@@ -51,14 +51,11 @@ export default class taskList {
   }
 
   update = (tag, newValue) => {
-    console.log("Index inside update method = "+tag)
-    console.log("New value inside method update = "+ newValue)
     this.taskArray.forEach((e) => {
-      if(e.tag===tag){
+      if (e.tag === tag) {
         e.description = newValue;
-        return;
       }
-    })    
+    });
     this.saveLocally();
   }
 
