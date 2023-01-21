@@ -20,7 +20,7 @@ document.querySelector('.div_placeholder').appendChild(submitImageElement);
 submitImageElement.classList.add('submit_image');
 
 // To clear local storage
-// localStorage.clear();
+//localStorage.clear();
 
 // Instance taskList
 const taskList = new TaskList(containerElement);

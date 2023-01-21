@@ -25,7 +25,10 @@ export default class taskList {
   }
 
   remove = (button) => {
-    this.taskArray = this.taskArray.filter((task) => task.index !== button.id);
+    console.log(button);
+    this.taskArray = this.taskArray.filter((task) => task.index !== Number(button.id));
+    console.log(typeof this.taskArray[0].index)
+    console.log(typeof button.id)
     button.parentElement.remove();
     this.updateIndex(this.taskArray);
     this.saveLocally();
