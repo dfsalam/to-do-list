@@ -25,15 +25,13 @@ submitImageElement.classList.add('submit_image');
 // Instance taskList
 const taskList = new TaskList(containerElement);
 
-// Event listener on input task to submit with Enter
+// Event listener on input task to submit with Enter (ADD)
 const inputTask = document.getElementById('input__task');
 inputTask.addEventListener('click', () => {
   inputTask.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
       const description = inputTask.value.trim();
-      if (description === '') {
-        inputTask.blur();
-      } else {
+      if (description !== '') {
         taskList.add(description);
         inputTask.value = '';
         inputTask.focus();
@@ -42,7 +40,7 @@ inputTask.addEventListener('click', () => {
   });
 });
 
-// Event listener on submit icon
+// Event listener on submit icon (ADD)
 submitImageElement.addEventListener('click', () => {
   const descriptionElement = document.getElementById('input__task');
   const description = descriptionElement.value.trim();
@@ -55,11 +53,12 @@ submitImageElement.addEventListener('click', () => {
   }
 });
 
-const taskElements = document.querySelectorAll('.list__element input');
+//Event listener inside task list (UPDATE)
+const taskElements = document.querySelectorAll('.task__listed');
 
 taskElements.forEach((e) => {
   e.addEventListener('input', () => {
-    const index = e.id;
+    const index = Number(e.id);
     const newValue = e.value;
 
     e.addEventListener('keypress', (pressed) => {
@@ -77,7 +76,7 @@ taskElements.forEach((e) => {
 // Checkbox eventlistener
 const checkboxList = document.querySelectorAll('.checkbox');
 checkboxList.forEach((e) => {
-  const index = e.id;
+  const index = Number(e.id);
   e.addEventListener('change', () => {
     interactive(e, taskList, index);
   });
