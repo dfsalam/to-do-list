@@ -94,7 +94,7 @@ body {
 
 .clear__all h2 {
   font-size: 18px;
-  text-decoration: underline;
+  text-decoration: underline;  
 }
 
 .list_element input:focus {
@@ -112,4 +112,5 @@ body {
 
 .task__completed {
   text-decoration: line-through;
+  font-style: italic;
 }
