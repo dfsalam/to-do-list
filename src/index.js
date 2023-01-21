@@ -88,8 +88,9 @@ taskElements.forEach((e) => {
 // Checkbox eventlistener
 const checkboxList = document.querySelectorAll('.checkbox');
 checkboxList.forEach((e) => {
-  const tag = e.id;
+  
   e.addEventListener('change', () => {
+    const tag = e.id;
     interactive(e, taskList, tag);
   });
 });

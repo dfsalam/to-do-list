@@ -71,4 +71,8 @@ export default class taskList {
   get amount() {
     return this.taskArray.length;
   }
+
+  get array() {
+    return this.taskArray;
+  }
 }
