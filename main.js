@@ -176,7 +176,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + .\"e0ab1035c5f2e8f9155d.png\";\n\n//# sourceURL=webpack://webpack-demo/./src/images/remove_icon.png?");
+eval("module.exports = __webpack_require__.p + '.' + \"e0ab1035c5f2e8f9155d.png\";\n\n//# sourceURL=webpack://webpack-demo/./src/images/remove_icon.png?");
 
 /***/ }),
 
@@ -186,7 +186,7 @@ eval("module.exports = __webpack_require__.p + .\"e0ab1035c5f2e8f9155d.png\";\n\
   \*******************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + .\"73e3182c68a27ac1a2f1.png\";\n\n//# sourceURL=webpack://webpack-demo/./src/images/submit.png?");
+eval("module.exports = __webpack_require__.p + '.' +\"73e3182c68a27ac1a2f1.png\";\n\n//# sourceURL=webpack://webpack-demo/./src/images/submit.png?");
 
 /***/ }),
 
@@ -196,7 +196,7 @@ eval("module.exports = __webpack_require__.p + .\"73e3182c68a27ac1a2f1.png\";\n\
   \*****************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + .\"18a3c6679879b9f48cdb.png\";\n\n//# sourceURL=webpack://webpack-demo/./src/images/sync.png?");
+eval("module.exports = __webpack_require__.p + '.' +\"18a3c6679879b9f48cdb.png\";\n\n//# sourceURL=webpack://webpack-demo/./src/images/sync.png?");
 
 /***/ })
 
