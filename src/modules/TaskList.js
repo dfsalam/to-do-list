@@ -4,8 +4,8 @@ export default class taskList {
   constructor(container) {
     this.taskArray = JSON.parse(localStorage.getItem('taskList')) || [];
     this.container = container;
-    if (this.amount > 0) {
-      this.loadList();
+    if(this.amount > 0){
+    this.loadList();
     }
   }
 
@@ -38,7 +38,7 @@ export default class taskList {
     const task = new Task(description, index);
     this.taskArray.push(task);
     this.container.appendChild(this.create(task));
-    this.saveLocally();
+    this.saveLocally();    
   }
 
   create = (task) => {
