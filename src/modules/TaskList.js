@@ -34,7 +34,6 @@ export default class taskList {
 
   add = (description) => {
     const index = this.amount + 1;
-
     const task = new Task(description, index);
     this.taskArray.push(task);
     this.container.appendChild(this.create(task));
