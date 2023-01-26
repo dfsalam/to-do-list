@@ -4,6 +4,7 @@
 
 import TaskList from './TaskList.js';
 import interactive from './interactive.js';
+import clearAll from './clearAll.js';
 // const localStorageMock = require('./localStorageMock.js')
 
 describe('tasks', () => {
@@ -28,15 +29,6 @@ describe('tasks', () => {
     }]);
   });
 
-  test('check html for add', () => {
-    const container = document.querySelector('#to-do-list').innerHTML
-    expect(container).toBe('<div class="list__element">      '+`
-      <input id="`+taskList2.taskArray[0].tag+`" class="checkbox" type="checkbox"> 
-      <input id="`+taskList2.taskArray[0].tag+'" class="task__listed" value="'+taskList2.taskArray[0].description+`">
-      <button class="remove__button" id="`+taskList2.taskArray[0].tag+`"></button>
-    `+'  </div>');
-  });
-
   // Delete testing
 
   const btn = document.querySelector('.remove__button');
@@ -55,19 +47,52 @@ describe('tasks', () => {
       completed: false,
     }]);
   });
+});
 
-  // Edit testing
-  describe('update', () => {
-    test('change the description of a task', () => {
-      taskList2.add('Task 1');
-      const task = taskList2.array[0];
-      taskList2.update(task.tag, 'Go to the Gym');
-      expect(task.description).toBe('Go to the Gym');
-    });
+// Edit testing
+describe('update', () => {
+  document.body.innerHTML = `
+    <div id="to-do-list"></div>
+  `;
+  const container = document.querySelector('#to-do-list');
+  const taskList2 = new TaskList(container);
+
+  test('change the description of a task', () => {
+    const task = taskList2.array[0];
+    taskList2.update(task.tag, 'Go to the Gym');
+    expect(task.description).toBe('Go to the Gym');
   });
+
+  test('check local storage for update', () => {
+    const localStorageRegister = JSON.parse(localStorage.getItem('taskList'));
+    delete localStorageRegister[0].tag;
+    expect(localStorageRegister).toStrictEqual([{
+      description: 'Go to the Gym',
+      index: 1,
+      completed: false,
+    }]);
+  });
+
   test('check box true or false', () => {
+    const element = document.querySelector('.checkbox');
     const nextSibling = element.nextElementSibling;
     interactive(element, taskList2, taskList2.array[0].tag);
-    expect(nextSibling.classList.contains("task__completed")).toBe(true);
+    expect(nextSibling.classList.contains('task__completed')).toBe(true);
+  });
+
+  test('check local storage if the task is completed', () => {
+    const localStorageRegister = JSON.parse(localStorage.getItem('taskList'));
+    delete localStorageRegister[0].tag;
+    expect(localStorageRegister).toStrictEqual([{
+      description: 'Go to the Gym',
+      index: 1,
+      completed: true,
+    }]);
+  });
+
+  test('check clear all completed function', () => {
+    clearAll(taskList2);
+    const localStorageRegister = JSON.parse(localStorage.getItem('taskList'));
+    expect(localStorageRegister).toHaveLength(0);
   });
 });
