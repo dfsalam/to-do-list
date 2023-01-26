@@ -11,7 +11,7 @@ export default class Task {
       task.classList.add('list__element');
       task.innerHTML = `      
       <input id="${this.tag}" class="checkbox" type="checkbox"></input> 
-      <input id="${this.tag}" class="task__listed" value=${this.description}></input>
+      <input id="${this.tag}" class="task__listed" value="${this.description}"></input>
       <button class="remove__button" id="${this.tag}"></button>
       `;
       return task;

@@ -27,6 +27,15 @@ describe('tasks', () => {
     }]);
   });
 
+  test('check html for add', () => {
+    const container = document.querySelector('#to-do-list').innerHTML
+    expect(container).toBe(`<div class="list__element">      `+`
+      <input id="`+taskList2.taskArray[0].tag+`" class="checkbox" type="checkbox"> 
+      <input id="`+taskList2.taskArray[0].tag+`" class="task__listed" value="`+taskList2.taskArray[0].description+`">
+      <button class="remove__button" id="`+taskList2.taskArray[0].tag+`"></button>
+    `+`  </div>`);
+  });
+
   // Delete testing
 
   const btn = document.querySelector('.remove__button');
